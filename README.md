@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/p6syoTQ3)
 # Pointers Assignment
 
 ## Overview
@@ -11,15 +12,116 @@ You are required to complete the following tasks:
 - **Description**: Implement this function to swap the values of two integers using pointers.
 - **Test Case**: The test swaps `x = 5` and `y = 10` and checks if the values are correctly swapped.
 
+
+#include <stdio.h>
+
+// Function to swap two integers using pointers
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5;
+    int y = 10;
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    
+    // Calling the swap function
+    swap(&x, &y);
+    
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 ### 2. Find the Maximum Value in an Array
 - **Function**: `int findMax(int *arr, int length);`
 - **Description**: This function traverses an array using a pointer and returns the maximum value found in the array.
 - **Test Case**: The array `{3, 1, 4, 1, 5, 9, 2, 6, 5}` has a maximum value of `9`.
 
+
+
+#include <stdio.h>
+
+int findMax(int *arr, int length) {
+    int max = arr[0];  // Initialize max with the first element
+    
+    // Traverse the array using a pointer
+    for (int i = 1; i < length; i++) {
+        if (*(arr + i) > max) {
+            max = *(arr + i);  // Update max if current element is greater
+        }
+    }
+    
+    return max;
+}
+
+int main() {
+    int arr[] = {3, 1, 4, 1, 5, 9, 2, 6, 5};
+    int length = sizeof(arr) / sizeof(arr[0]);
+    
+    int max = findMax(arr, length);
+    printf("The maximum value in the array is: %d\n", max);
+    
+    return 0;
+}
+
 ### 3. Reverse an Array
 - **Function**: `void reverseArray(int *arr, int length);`
 - **Description**: This function reverses the elements in an array using pointers.
 - **Test Case**: The array `{1, 2, 3, 4, 5}` should be reversed to `{5, 4, 3, 2, 1}`.
+#include <stdio.h>
+
+void reverseArray(int *arr, int length) {
+    int *start = arr;            // Pointer to the start of the array
+    int *end = arr + length - 1;  // Pointer to the end of the array
+    int temp;
+
+    while (start < end) {
+        // Swap the elements
+        temp = *start;
+        *start = *end;
+        *end = temp;
+
+        // Move the pointers towards the center
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int length = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array: ");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    reverseArray(arr, length);
+
+    printf("Reversed array: ");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
 
 ## How to Complete the Assignment
 
